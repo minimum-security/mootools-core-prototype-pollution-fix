@@ -934,6 +934,12 @@ describe('Object.merge', function(){
 		expect(a.f).to.not.equal(b.f);
 	});
 
+	it('should not allow prototype pollution via __proto__', function(){
+		Object.merge({}, JSON.parse('{"__proto__": {"vulnerable": true}}'));
+
+		expect('any object'.vulnerable).to.not.equal(true);
+	});
+
 });
 
 describe('Object.append', function(){

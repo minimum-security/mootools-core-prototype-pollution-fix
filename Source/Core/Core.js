@@ -400,7 +400,10 @@ Object.extend({
 		if (typeOf(k) == 'string') return mergeOne(source, k, v);
 		for (var i = 1, l = arguments.length; i < l; i++){
 			var object = arguments[i];
-			for (var key in object) mergeOne(source, key, object[key]);
+			for (var key in object) {
+				if (key === "__proto__" || key === "constructor.prototype") continue;
+				mergeOne(source, key, object[key]);
+			}
 		}
 		return source;
 	},

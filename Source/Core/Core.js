@@ -401,7 +401,7 @@ Object.extend({
 		for (var i = 1, l = arguments.length; i < l; i++){
 			var object = arguments[i];
 			for (var key in object){
-				if (key === '__proto__' || key === 'constructor') continue;
+				if (key === '__proto__') continue;
 				mergeOne(source, key, object[key]);
 			}
 		}
